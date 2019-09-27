@@ -1,0 +1,67 @@
+html, body {
+    background-color: lavenderblush;
+
+    text-align: center;
+    
+    perspective: 700px;
+  }
+
+
+header {
+  margin: 0 auto;
+  background-image: url('');
+  background-repeat: no-repeat;
+  background-size: auto;
+  background-position: center;
+}
+
+div {
+    width: 300;
+    height: 200px;
+    background-position: center;
+}
+
+h1 {
+    margin: 40px;
+    font-size: 30px;
+    color:rgb(51, 0, 102);
+}
+
+
+  
+  button {
+    margin-top: 50px;
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    outline: 0;
+    appearance: none;
+  }
+
+  
+
+  button {
+    display: inline-block;
+    position: relative;
+    padding: 10px 20px;
+    top: 0;
+    font-size: 20px;
+    font-family: "Open Sans", Helvetica;
+    border-radius: 5px;
+    border-bottom: 1px solid rgba(39, 160, 197, 0.2);
+    background: rgb(255, 102, 102);
+    color: #fff;
+    
+    transform: translateZ(0);
+    transition: all 0.2s ease;
+  }
+  
+
+  
+  button:active {
+    top: 0px;
+    box-shadow: 0px 0px 0px rgba(7, 25, 65, 0);
+    background: rgb(14, 45, 102);
+  }
+
