@@ -28,20 +28,14 @@ class showsDB:
         self.cursor.execute("SELECT * FROM shows WHERE id = ?", data)
         result = self.cursor.fetchone()
         return result
-    
-    #def deleteShows(self, id):
-    #    if self.getOneShow(id) != None:
-    #        self.cursor.execute("DELETE FROM shows WHERE id = ?", [id])
-    #        self.connection.commit()
-    #        return True
-    #    else:
-    #        return False
 
     def deleteShows(self, shows_id):
         data = [shows_id]
         self.cursor.execute("DELETE FROM shows WHERE id = ?", data)
         self.connection.commit()
 
-    #def editShows(self, shows_id, name, genre, hours, rating):
-    #    data = [shows_id]
-    #    self.cursor.execute("UPDATE shows SET (name, genre, status, rating) VALUES (?, ?, ?, ?) WHERE shows_id" , data)
+    def editShows(self, shows_id, name, genre, status, rating):
+        data = [name, genre, status, rating, shows_id]
+        print(data)
+        self.cursor.execute("UPDATE shows SET name = ?, genre = ?, status = ?, rating = ? WHERE id = ?" , data)
+        self.connection.commit()

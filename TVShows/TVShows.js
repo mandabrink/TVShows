@@ -5,6 +5,7 @@ var showList = document.querySelector("#text");
 
 function shows () {
     fetch("http://localhost:8080/shows").then(function (response) {
+        showList.innerHTML = ""
 
         console.log("server response");
         response.json().then(function (data) {
@@ -15,16 +16,25 @@ function shows () {
 
                 var newListItem = document.createElement("h3");
 
-                // h3 tag: contains the title
-                var titleHeading = document.createElement("h1");
+                // the title
+                var titleHeading = document.createElement("h2");
                 titleHeading.innerHTML = list.name;
                 newListItem.appendChild(titleHeading);
                 
-                // div tag: contains the genre
-                var genreDiv = document.createElement("h1");
+                // the genre
+                var genreDiv = document.createElement("h2");
                 genreDiv.innerHTML = list.genre;
                 newListItem.appendChild(genreDiv);
 
+                // the status
+                var statusDiv = document.createElement("h2");
+                statusDiv.innerHTML = list.status;
+                newListItem.appendChild(statusDiv);
+
+                // the genre
+                var ratingDiv = document.createElement("h2");
+                ratingDiv.innerHTML = list.rating;
+                newListItem.appendChild(ratingDiv);
 
                 // button tag: the delete button 
                 var deleteButton = document.createElement("button");
@@ -34,13 +44,27 @@ function shows () {
                     if (confirm("are you sure you want to delete " + list.name + "?"))
                         deleteShows(list.id);
                 };
+                var editButton = document.createElement("button");
+                editButton.innerHTML = "edit";
+                editButton.onclick = function () {
+                    console.log("edit clicked", list.id);
+                    document.getElementById("mymodal").style.display = "flex"
+                    document.querySelector("#edit-show-name").value = list.name;
+                    document.querySelector("#edit-show-genre").value = list.genre;
+                    document.querySelector("#edit-show-status").value = list.status;
+                    document.querySelector("#edit-show-rating").value = list.rating;
+                    editClickHandler(list)
+
+                };
                 newListItem.appendChild(deleteButton);
+                newListItem.appendChild(editButton);
                 showList.appendChild(newListItem);
             });
         });
 
     });
 };
+shows();
 
 addButton.onclick = function () {
     //var TVShowsInput = document.querySelector("#inputShow");
@@ -83,8 +107,40 @@ var deleteShows = function (showID) {
     });
 }
 
-shows();
+var editClickHandler = function (show) {
 
-
+    var editButton = document.querySelector("#save");
+    editButton.onclick = function () {
+        //var TVShowsInput = document.querySelector("#inputShow");
+        //var TVShowsValue = TVShowsInput.value;
+        //var bodyStr = "name=" + encodeURIComponent(TVShowsValue);
+    
+        var editShowName = document.querySelector("#edit-show-name").value;
+        var editShowGenre = document.querySelector("#edit-show-genre").value;
+        var editShowStatus = document.querySelector("#edit-show-status").value;
+        var editShowRating = document.querySelector("#edit-show-rating").value;
+    
+        var bodyStr = "name=" + encodeURIComponent(editShowName);
+        bodyStr += "&genre=" + encodeURIComponent(editShowGenre);
+        bodyStr += "&status=" + encodeURIComponent(editShowStatus);
+        bodyStr += "&rating=" + encodeURIComponent(editShowRating);
+        bodyStr += "&id=" + encodeURIComponent(show.id);
+    
+        fetch("http://localhost:8080/shows", {
+            // request parameters:
+            method: "PUT",
+            body: bodyStr,
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded"
+            }
+        }).then(function (response) {
+            // handle the response
+            console.log("server responded", response)
+            document.getElementById("mymodal").style.display = "none"
+            shows();
+        });
+    
+    };
+}
 
 

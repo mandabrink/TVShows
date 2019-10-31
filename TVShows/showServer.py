@@ -70,15 +70,42 @@ class MyRequestHandler(BaseHTTPRequestHandler):
         else:
             self.handleNotfound()
 
+    def do_PUT(self):
+        if self.path == "/shows":    
+            length = self.headers["Content-Length"]
+            body = self.rfile.read(int(length)).decode("utf-8")
+            print("BODY", body)
+
+            parse_body = parse_qs(body)
+            print("PASED BODY:", parse_body)
+
+
+            name = parse_body["name"][0]
+            genre = parse_body["genre"][0]
+            status = parse_body["status"][0]
+            rating = parse_body["rating"][0]
+            shows_id = parse_body["id"][0]
+
+            db = showsDB()
+            db.editShows(shows_id, name, genre, status, rating)
+
+            self.send_response(201)
+            self.send_header("Access-Control-Allow-Origin", "*")
+            self.end_headers()    
+        
+        else:
+            self.handleNotfound()
+
     def do_DELETE(self):
         parts = self.path.split('/')[1:]
         collection = parts[0]
-        if len(parts) >1:
+        print(parts)
+        if len(parts) > 1:
             id = parts[1]
         else:
             id = None
         db = showsDB()
-        if collection == "posts":
+        if collection == "shows":
             if id == None or db.getOneShow == None:
                 self.handleNotfound()
             else:
@@ -135,6 +162,8 @@ class MyRequestHandler(BaseHTTPRequestHandler):
             self.wfile.write(bytes(json.dumps(shows), "utf-8"))
         else:
             self.handleNotfound()
+
+
 
 def run():
     listen = ("127.0.0.1", 8080)

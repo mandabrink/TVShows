@@ -6,29 +6,53 @@
     </head>
     <body>
         <header>
-            <div class="container">
+            <div class="container headertext">
                 <img src="Screen.jpg" alt="movie look" >
                 <div class="centered">MY LIST OF SHOWS</div>
             </div>
         </header>
         <p>
-            <label>Name</label>
+            <label class="inputname" >Name</label>
             <input type="text" id="new-show-name" class="mytext">
         </p>
         <p>
-            <label>Genre</label>
+            <label class="inputname" >Genre</label>
             <input type="text" id="new-show-genre" class="mytext">
         </p>
         <p>
-            <label>Status</label>
+            <label class="inputname" >Status</label>
             <input type="text" id="new-show-status" class="mytext">
         </p>
         <p>
-            <label>Rating</label>
+            <label class="inputname" >Rating</label>
             <input type="text" id="new-show-rating" class="mytext">
         </p>
-        <button id="add">add</button>
+        <button id="add" class="addButton">add</button>
+
         <h1 id="text"></h1>
+
+        <div id="mymodal" class="mymodal">
+            <div class="mymodalbox">
+                <p>
+                    <label>Name</label>
+                    <input type="text" id="edit-show-name" class="modalText">
+                </p>
+                <p>
+                    <label>Genre</label>
+                    <input type="text" id="edit-show-genre" class="modalText">
+                </p>
+                <p>
+                    <label>Status</label>
+                    <input type="text" id="edit-show-status" class="modalText">
+                </p>
+                <p>
+                    <label>Rating</label>
+                    <input type="text" id="edit-show-rating" class="modalText">
+                </p>
+            <button id="save">save</button>
+            </div>
+        </div>
+
         <script type="text/javascript" src="TVShows.js"></script>
     </body>
 
