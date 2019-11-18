@@ -1,0 +1,168 @@
+html, body {
+    background-color: rgb(51, 51, 77);
+    text-align: center;
+    perspective: 700px;
+    position: relative;
+  }
+
+  @import url(https://fonts.googleapis.com/css?family=Anton);
+
+.headertext {
+  font-family: 'Anton', sans-serif;
+  text-align: center;
+  font-size: 65px;
+  flex-direction: initial;
+  font-variant-position: initial;
+  text-transform: uppercase;
+}
+
+img {
+  max-width: 100%;
+  height: 350px;
+}
+
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+p {
+  text-align: center;
+  margin: 40;
+}
+
+.inputname {
+  text-align: left;
+  font-size: 25px;
+  color: rgb(179, 182, 249);
+}
+
+h1 {
+  text-align: left;
+  margin-top: 150px;
+  padding-left: 65px;
+  font-size: 40px;
+  color: whitesmoke;
+}
+
+h2 {
+  margin: 10px;
+  text-align: left;
+  font-size: 40px;
+  color: whitesmoke;
+}
+
+h3 {
+  padding-bottom: 40px;
+}
+
+
+.mytext {
+  width: 200px;
+  height: 25px;
+}
+
+.modalText {
+  width: 100px;
+  height: 30px;
+}
+
+.createText {
+  width: 100px;
+  height: 30px;
+}
+
+button {
+  margin-right: 20px;
+
+  background: transparent;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  outline: 0;
+  appearance: none;
+}
+
+  
+button {
+  display: inline-block;
+  position: relative;
+  padding: 5px 20px;
+  top: 0;
+  font-size: 20px;
+  font-family: "Open Sans", Helvetica;
+  border-radius: 5px;
+  border-bottom: 1px solid rgba(39, 160, 197, 0.2);
+  background: rgb(179, 182, 249);
+  color: #fff;
+    
+  transform: translateZ(0);
+  transition: all 0.2s ease;
+}
+ 
+
+.addButton {
+  margin-top: 20px;
+  margin-right: 0;
+  margin-left: 30px;
+}
+
+button:active {
+  top: 0px;
+  box-shadow: 0px 0px 0px rgba(7, 25, 65, 0);
+  background: rgb(137, 142, 245);
+}
+
+.mymodal {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(39, 160, 197, 0.2);
+}
+
+.mymodalbox {
+  margin-top: 50px;
+  position: relative;
+  width: 500px;
+  background: #fff;
+  padding: 10px;
+  display: block;
+}
+
+
+.createUser {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: rgba(39, 160, 197, 0.2);
+}
+
+.createBox {
+  margin-top: 50px;
+  position: relative;
+  width: 500px;
+  background: #fff;
+  padding: 10px;
+  display: block;
+}
+
+
+
